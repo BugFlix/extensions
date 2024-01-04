@@ -1,0 +1,24 @@
+{
+  "name": "Weblog-extension",
+  "description": "메모 익스텐션 입니다",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Weblog-extension"
+  },
+  "icons": {
+    "16": "favicon.ico",
+    "48": "favicon.ico",
+    "128": "favicon.ico"
+  },
+
+"permissions": ["activeTab"],  
+"content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["static/js/bundle.js"],
+    "run_at": "document_end"
+  }
+]
+
+}

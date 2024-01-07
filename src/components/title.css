@@ -1,0 +1,20 @@
+.title-container{
+    position: absolute;
+    display: flex;
+    top: 60px;
+    left: 0;
+}
+.title-container textarea{
+    margin-left:5px;
+    outline: none;
+    width: 100%;
+    color: #000000;
+    border: none;
+    height: 30px;
+    justify-content: center;
+    background: transparent; 
+    resize: none;
+    font-size: 20px;
+    font-weight: 800;
+
+}

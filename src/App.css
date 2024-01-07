@@ -1,0 +1,324 @@
+
+
+.extension-content {
+/* 포스트1 */
+
+box-sizing: border-box;
+
+position: fixed;
+top: 0;
+right: 0;
+width: 295px;
+height: 100vh;
+display: flex;
+justify-content: center;
+z-index: 999;
+background: #FFFFFF;
+/* main color */
+border: 1px solid #AAB3FF;
+box-shadow: 0px 0px 25px 7px rgba(170, 179, 255, 0.3);
+border-radius: 16px;
+transition: opacity 0.3s ease-in-out;
+opacity: 1;
+
+}
+.Container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.scrab-box{
+  /* 포스트1 */
+box-sizing: border-box;
+
+position: relative;
+top:175px;
+width: 95%;
+height: 207px;
+display: flex;
+justify-content: center;
+
+background: rgba(233, 233, 233, 0.5);
+/* main color */
+border: 1px dashed #AAB3FF;
+box-shadow: 0px 0px 25px rgba(170, 179, 255, 0.3);
+border-radius: 16px;
+overflow-x: auto;
+overflow-y: auto;
+
+
+}
+.scrab-box div, .scrab-box pre, .scrab-box td, .scrab-box tr, .scrab-box tbody, .scrab-box code{
+  max-width: 100%; /* Set the maximum width for inner divs */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */ 
+  font-size: 15px;
+  font-weight: 0;
+}
+.scrab-box h1{
+  font-size: 18px;
+  font-weight: bold;
+}
+.scrab-box h2 , .scrab-box a, .scrab-box li, .scrab-box button, .scrab-box p, .scrab-box span{
+  font-size: 12px;
+}
+.scrab-box img, .scrab-box svg{
+  width: 100%;
+}
+.extension-content.hidden {
+  opacity: 0;
+  pointer-events: none; /* 클릭 이벤트 비활성화 */
+}
+.porfile-container{
+  /* 프로필 아이콘 및 회원 */
+
+position: absolute;
+width: 100%;
+height: 50px;
+border-bottom: 1px solid #AAB3FF;
+
+
+}
+.profile-circle{
+  /* Ellipse 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+top: 3%;
+right: 37%;
+width: 38px;
+height: 38px;
+
+background: #FFFFFF;
+border: 1px solid #44A7FF;
+border-radius: 50%;
+/* Line 16 */
+
+
+
+
+
+
+}
+.profile-circle img{
+
+
+position: absolute;
+width: 100%;
+height: 100%;
+
+}
+.username{
+  /* Tkrhdrhkdduf */
+
+position: absolute;
+width: 111.73px;
+height: 21.41px;
+right: 2%;
+justify-content: center;
+top: 15px;
+font-family: 'Acme';
+font-style: normal;
+font-weight: 800;
+font-size: 13px;
+line-height: 16px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #B5B7B8;
+
+
+}
+.closeBtn{
+  /* close-button 1 */
+
+position: fixed;
+top: 2%;
+right: 275px;
+width: 16px;
+height: 12px;
+z-index: 9999;
+
+}
+.openBtn{
+  /* close-button 1 */
+
+position: fixed;
+top: 2%;
+right: 2%;
+width: 16px;
+height: 12px;
+z-index: 9999;
+
+}
+.Menu-Container{
+
+  box-sizing: border-box;
+  
+  position: absolute;
+  top: 2.5%;
+  left: -30%;
+  display: flex;
+  width: 72px;
+  height: 22px;
+  
+  background: #FFFFFF;
+  border: 1px solid #AAB3FF;
+  border-radius: 30px;
+  }
+  .E{
+    /* E */
+
+position: absolute;
+width: 17px;
+height: 9px;
+left: 1.5%;
+font-family: 'Acme';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 22px;
+align-items: center;
+text-align: center;
+color: #AAB3FF;
+
+
+  }
+  .V{
+    /* v */
+
+position: absolute;
+right: 36%;
+width: 17px;
+height: 9px;
+font-family: 'Actor';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 22px;
+align-items: center;
+text-align: center;
+
+color: #AAB3FF;
+
+
+  }
+  .U{
+
+position: absolute;
+right: 1%;
+width: 17px;
+height: 9px;
+font-family: 'Actor';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 22px;
+align-items: center;
+text-align: center;
+
+color: #AAB3FF;
+
+
+  }
+  .post-box{
+    /* 포스트1 */
+  box-sizing: border-box;
+  
+  position: absolute;
+  top: 435px;
+  width: 95%;
+  height: 207px;
+  display: flex;
+  justify-content: center;
+  
+  background: rgba(233, 233, 233, 0.5);
+  /* main color */
+  border: 1px dashed #AAB3FF;
+  box-shadow: 0px 0px 25px rgba(170, 179, 255, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+
+  
+  
+  }
+  #editor {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    padding: 16px;
+    border: none;
+    background: transparent;
+    resize: none;
+    font-size: 16px;
+    line-height: 1.5;
+    outline: none;
+    overflow-y: auto;
+  }
+.but{
+    position: fixed;
+    top: 150px;
+    right: 2.5%;
+    width: 50px;
+    height: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Rectangle 66 */
+
+box-sizing: border-box;
+
+color: #FFFFFF;
+/* main color */
+background: #AAB3FF;
+/* main color */
+border: 2px solid #AAB3FF;
+border-radius: 30px;
+
+  }
+.header-container{
+  
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #AAB3FF;
+  
+}
+.logo-header{
+
+position: relative;
+width: 80px;
+height: 78px;
+}
+.setting-header{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 10%;
+}
+.saveBtn{
+  position: absolute;
+  background: black;
+  bottom: 90px;
+  right: 40px;
+  width: 50px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+
+color: #FFFFFF;
+/* main color */
+background: #AAB3FF;
+/* main color */
+border: 2px solid #AAB3FF;
+border-radius: 30px;
+
+}

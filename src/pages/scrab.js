@@ -10,9 +10,7 @@ const Scrab = forwardRef(({ getStyledContent }, ref) => {
     setSavedContent(currentContent);
   };
 
-  // Expose a method to the parent component using useImperativeHandle
   useImperativeHandle(ref, () => ({
-    // You can expose any methods or properties here
     handleSaveAndShowNewDiv,
     getInnerHTML: () => {
       return document.getElementById("scrab-box").innerHTML;

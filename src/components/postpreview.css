@@ -1,0 +1,20 @@
+.postContainer{
+    position: relative;
+    top: 50px;
+    width: 100%;
+    height: 86%;
+    display: grid;
+    grid-template-columns: repeat(2,0.0001fr);
+    grid-template-rows: repeat(2,0.001fr);
+}
+.previewBox{
+    margin-left: 15px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    width: 125px;
+    height: 125px;
+    background: #FFFFFF;
+    border: 1px solid #AAB3FF;
+    box-shadow: 0px 0px 25px 7px rgba(170, 179, 255, 0.3);
+    border-radius: 16px;
+}  

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import "../components/tag.css";
 
-const Tag = () => {
+const Tag = forwardRef((props, ref) => {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -16,7 +16,11 @@ const Tag = () => {
       setInputValue("");
     }
   };
-
+  useImperativeHandle(ref, () => ({
+    getInnerHTML: () => {
+      return tags;
+    },
+  }));
   return (
     <div className="tag-container">
       <span>
@@ -35,6 +39,6 @@ const Tag = () => {
       />
     </div>
   );
-};
+});
 
 export default Tag;

@@ -7,12 +7,14 @@ import View from "../pages/view";
 import Post from "./post";
 import Tag from "./tag";
 import Title from "./title";
+import axios from "axios";
+import Update from "../pages/update";
 
 const Menu = () => {
   const [selectedHtml, setSelectedHtml] = useState("");
   const [computedStyles, setComputedStyles] = useState({});
   const [isDragging, setIsDragging] = useState(false);
-  const letters = ["E", "V"]; // Add more letters if needed
+  const letters = ["E", "V", "U"]; // Add more letters if needed
   const [selectedLetter, setSelectedLetter] = useState("E");
   const [selectedComponent, setSelectedComponent] = useState("E");
   const toggleSelected = (letter) => {
@@ -28,7 +30,7 @@ const Menu = () => {
     backgroundColor: selectedLetter === letter ? "#AAB3FF" : "",
     color: selectedLetter === letter ? "#ffffff" : "",
     height: "100%",
-    width: "45%",
+    width: "21px",
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
@@ -43,9 +45,21 @@ const Menu = () => {
   useDragDetect(handleSelectionChange, setIsDragging);
 
   const getStyledContent = useStyledContent(computedStyles, selectedHtml);
+  const titleRef = useRef();
+  const tagRef = useRef();
   const scrabRef = useRef();
   const postRef = useRef();
 
+  const getTitleHtml = () => {
+    if (titleRef && titleRef.current) {
+      return titleRef.current.getInnerHTML();
+    }
+  };
+  const getTagHtml = () => {
+    if (tagRef && tagRef.current) {
+      return tagRef.current.getInnerHTML();
+    }
+  };
   const getScrabHtml = () => {
     if (scrabRef && scrabRef.current) {
       return scrabRef.current.getInnerHTML();
@@ -59,11 +73,32 @@ const Menu = () => {
     return "";
   };
   const saveMemo = () => {
+    const titleHtml = getTitleHtml();
+    const tagHtml = getTagHtml();
     const scrabHtml = getScrabHtml();
     const postHtml = getPostHtml();
-    console.log(scrabHtml);
-    console.log(postHtml);
+    const requestData = {
+      data: [
+        {
+          title: titleHtml,
+          tag: tagHtml,
+          content: scrabHtml,
+          memo: postHtml,
+          url: window.location.href,
+          image_url:
+            "https://blog.kakaocdn.net/dn/clyrhv/btqXJVvfOgF/1lMKjoQo3iW0pyYDmV2HVK/img.jpg",
+        },
+      ],
+    };
+    console.log(requestData);
+    const response = axios.post("/api/post", requestData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(response.data);
   };
+
   return (
     <div className="Container">
       <div className="Menu-Container">
@@ -80,8 +115,8 @@ const Menu = () => {
       </div>
       {selectedComponent === "E" && (
         <>
-          <Title />
-          <Tag />
+          <Title ref={titleRef} />
+          <Tag ref={tagRef} />
           <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
           <Post ref={postRef} />
           <button className="saveBtn" onClick={saveMemo}>
@@ -90,6 +125,7 @@ const Menu = () => {
         </>
       )}
       {selectedComponent === "V" && <View />}
+      {selectedComponent === "U" && <Update />}
     </div>
   );
 };

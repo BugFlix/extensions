@@ -1,10 +1,15 @@
-import React, { memo, useState } from "react";
+import React, { forwardRef, memo, useState, useImperativeHandle } from "react";
 import "../components/title.css";
-const Title = () => {
+const Title = forwardRef((props, ref) => {
   const [memoTitle, setMemoTitle] = useState("");
   const handleMemoTitle = (e) => {
     setMemoTitle(e.target.value);
   };
+  useImperativeHandle(ref, () => ({
+    getInnerHTML: () => {
+      return memoTitle;
+    },
+  }));
   return (
     <div className="title-container">
       <textarea
@@ -15,5 +20,5 @@ const Title = () => {
       />
     </div>
   );
-};
+});
 export default Title;

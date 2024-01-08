@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import Profile from "../components/profile";
 import closeBtnImg from "../../src/images/closeBtn.png";
-import openBtnImg from "../../src/images/profile.png";
+import openBtnImg from "../../src/images/logo.png";
 import Menu from "../components/menu";
 import Header from "../components/header";
 const Extensions = ({ onLogout }) => {

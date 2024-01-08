@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import closeBtnImg from "../../src/images/closeBtn.png";
-import openBtnImg from "../../src/images/profile.png";
+import openBtnImg from "../../src/images/logo.png";
 import Header from "../components/header";
 import Account from "./Account";
 import UnloginMenu from "../components/unloginmenu";

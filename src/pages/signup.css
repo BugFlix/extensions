@@ -1,4 +1,4 @@
-.LoginBackground {
+.RegisterBackground {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -14,7 +14,7 @@
     border-radius: 16px;
 }
 
-.loginModal {
+.RegisterModal {
     background: #ffffff;
     max-width: 15vw;
     min-width: 200px;
@@ -22,17 +22,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 380px;
+    height: 500px;
     border: 2px solid #AAB3FF
 }
 
-.loginHeader {
+.RegisterHeader {
     padding-top: 30px;
     font-size: 16px;
     font-weight: bold;
 }
 
-.loginModal form {
+.RegisterModal form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
     color: red;
 }
 .input {
-    width: 100%;
+    width: 90%;
     border: none;
     font-size: 13px;
     margin-top: 13px;
@@ -81,9 +81,9 @@
     display: flex;
 }
 
-.loginActionBtn {
+.registerActionBtn {
     position: absolute;
-    bottom: 300px;
+    bottom: 150px;
     width: 80px;
     height: 30px;
     border-radius: 15px;
@@ -97,11 +97,11 @@
     border: none;
 }
 
-.loginActionBtn:hover {
+.registerActionBtn:hover {
     background-color: #b7bef9;
 }
 
-.logincloseBtn {
+.RegistercloseBtn {
     width: 16px;
     height: 16px;
     border-radius: 17px;
@@ -114,6 +114,6 @@
     align-items: center;
     justify-content: center;
 }
-.logincloseBtn:hover {
+.RegistercloseBtn:hover {
     background-color: rgba(15,20,25, 0.1);
 }

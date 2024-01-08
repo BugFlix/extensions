@@ -13,7 +13,7 @@ const profile = ({ onLogout }) => {
       <circle className="profile-circle">
         <img src={profileImg} alt="profile" />
       </circle>
-      <div className="username">Tkrhdrhkdduf</div>
+      <div className="extension-username">Tkrhdrhkdduf</div>
     </div>
   );
 };

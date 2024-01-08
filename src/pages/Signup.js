@@ -1,45 +1,131 @@
-import React from "react";
-const Login = () => {
+import "./signup.css";
+import CloseBtn from "../images/closeBtn.png";
+import React, { useState } from "react";
+import Extensions from "./Loginextentions";
+const Signup = ({ onClose, onLoginSuccess }) => {
+  const [id, setId] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+  const [nickname, setNickName] = useState();
+  const [birth, setBirth] = useState();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+  const handleChangeId = (e) => {
+    setId(e.target.value);
+  };
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const handleChangePhone = (e) => {
+    setPhone(e.target.value);
+  };
+  const handleChangeNickname = (e) => {
+    setNickName(e.target.value);
+  };
+  const handleChangeBirth = (e) => {
+    setBirth(e.target.value);
+  };
   return (
-    <div className={styles.modalBackground}>
-      <div className={styles.modal}>
-        <div className={styles.modalHeader}>
-          <button className={styles.closeBtn} onClick={onCLose}></button>
-          <div>로그인하세요.</div>
+    <div className="RegisterBackground">
+      <div className="RegisterModal">
+        <div className="RegisterHeader">
+          <img
+            src={CloseBtn}
+            className="RegistercloseBtn"
+            onClick={onClose}
+          ></img>
+          <div>회원가입</div>
         </div>
         <form onSubmit={onSubmit}>
-          <div className={styles.modalBody}>
-            <div className={styles.inputDiv}>
-              <label className={styles.inputLabel} htmlFor="id">
+          <div className="modalBody">
+            <div className="inputDiv">
+              <label className="inputLabel" htmlFor="id">
                 아이디
               </label>
               <input
                 id="id"
-                className={styles.input}
+                className="input"
                 value={id}
                 onChange={handleChangeId}
                 type="text"
                 placeholder=""
               />
             </div>
-            <div className={styles.inputDiv}>
-              <label className={styles.inputLabel} htmlFor="password">
+            <div className="inputDiv">
+              <label className="inputLabel" htmlFor="password">
                 비밀번호
               </label>
               <input
                 id="password"
-                className={styles.input}
+                className="input"
                 value={password}
                 onChange={handleChangePassword}
+                type="password"
+                placeholder=""
+              />
+            </div>
+            <div className="inputDiv">
+              <label className="inputLabel" htmlFor="email">
+                이메일
+              </label>
+              <input
+                id="email"
+                className="input"
+                value={email}
+                onChange={handleChangeEmail}
+                type="text"
+                placeholder=""
+              />
+            </div>
+            <div className="inputDiv">
+              <label className="inputLabel" htmlFor="phone">
+                전화번호
+              </label>
+              <input
+                id="phone"
+                className="input"
+                value={phone}
+                onChange={handleChangePhone}
+                type="text"
+                placeholder=""
+              />
+            </div>
+            <div className="inputDiv">
+              <label className="inputLabel" htmlFor="nickname">
+                닉네임
+              </label>
+              <input
+                id="nickname"
+                className="input"
+                value={nickname}
+                onChange={handleChangeNickname}
+                type="text"
+                placeholder=""
+              />
+            </div>
+            <div className="inputDiv">
+              <label className="inputLabel" htmlFor="birth">
+                생년월일
+              </label>
+              <input
+                id="birth"
+                className="input"
+                value={birth}
+                onChange={handleChangeBirth}
                 type="text"
                 placeholder=""
               />
             </div>
           </div>
-          <div className={styles.message}>{message}</div>
-          <div className={styles.modalFooter}>
-            <button className={styles.actionBtn} disabled={!id && !password}>
-              로그인하기
+          <div className="modalFooter">
+            <button className="registerActionBtn" disabled={!id && !password}>
+              회원가입하기
             </button>
           </div>
         </form>
@@ -47,4 +133,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Signup;

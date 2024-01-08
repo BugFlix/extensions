@@ -2,6 +2,7 @@ import "./login.css";
 import CloseBtn from "../images/closeBtn.png";
 import React, { useState } from "react";
 import Extensions from "./Loginextentions";
+import axios from "axios";
 const Login = ({ onClose, onLoginSuccess }) => {
   const [id, setId] = useState();
   const [password, setPassword] = useState();
@@ -15,6 +16,22 @@ const Login = ({ onClose, onLoginSuccess }) => {
     } else {
       alert("로그인 실패");
     }
+    axios
+      .get("/api/users/login", {
+        params: {
+          loginId: id,
+          password: password,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const handleChangeId = (e) => {
     setId(e.target.value);
@@ -53,14 +70,14 @@ const Login = ({ onClose, onLoginSuccess }) => {
                 className="input"
                 value={password}
                 onChange={handleChangePassword}
-                type="text"
+                type="password"
                 placeholder=""
               />
             </div>
           </div>
           <div className="message">{message}</div>
           <div className="modalFooter">
-            <button className="actionBtn" disabled={!id && !password}>
+            <button className="loginActionBtn" disabled={!id && !password}>
               로그인하기
             </button>
           </div>

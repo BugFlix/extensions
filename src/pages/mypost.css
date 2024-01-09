@@ -1,0 +1,11 @@
+.myPostBackground{
+    position: absolute;
+    top: 0;
+    left: -400px;
+    background: black;
+    color: white;
+    width: 400px;
+    height: 500px;
+
+
+}

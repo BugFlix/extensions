@@ -3,7 +3,7 @@ import "./updatepreview.css";
 import Collection2 from "../images/multiple.png";
 import MyPost from "../pages/mypost";
 
-const MyPostPreview = () => {
+const MyPostPreview = ({ contenti }) => {
   const collection1Ref = useRef();
   const collection2Ref = useRef();
   const [collection, selectCollection] = useState("collect1column");
@@ -127,7 +127,7 @@ const MyPostPreview = () => {
           </div>
         </div>
       </div>
-      {showMyPost && <MyPost />}
+      {showMyPost && <MyPost contenti={contenti} />}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import Mypostrpreview from "../components/mypostpreview";
 import "./update.css";
 import axios from "axios";
-const Update = () => {
+const Update = ({ contenti }) => {
   axios
     .get("//api/post/mine", {
       params: {
@@ -20,7 +20,7 @@ const Update = () => {
     });
   return (
     <div className="updateBackground">
-      <Mypostrpreview />
+      <Mypostrpreview contenti={contenti} />
     </div>
   );
 };

@@ -98,6 +98,7 @@ const Menu = () => {
     });
     console.log(response.data);
   };
+  const content = getScrabHtml();
 
   return (
     <div className="Container">
@@ -125,7 +126,7 @@ const Menu = () => {
         </>
       )}
       {selectedComponent === "V" && <View />}
-      {selectedComponent === "U" && <Update />}
+      {selectedComponent === "U" && <Update contenti={content} />}
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.unLogginedBar{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    height: 45px;
+}
+.unLogginedBar button{
+    margin-right: 10px;
+    width: 70px;
+}

@@ -1,0 +1,31 @@
+.editor-menu{
+  position: fixed;
+  top: 400px;
+  z-index: 9999;
+  
+}
+button {
+  background: white;
+  border: 1px solid #AAB3FF;
+  color: #333; /* Text color */
+  cursor: pointer;
+  border-radius: 4px;
+  width: 30px;
+  height: 20px;
+
+}
+button img{
+  
+  width: 70%;
+  height: 70%;
+}
+
+button:hover {
+  background-color: #AAB3FF;
+  color: white;
+}
+.post-box .editor-menu button.active {
+  background-color: #AAB3FF;
+  color: white;
+}
+

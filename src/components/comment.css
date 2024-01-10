@@ -1,89 +1,66 @@
-.commentContainer {
-    position: absolute;
-    bottom: 75px;
-    box-sizing: border-box;
-    width: 90%;
-    background: #ffffff;
-    border: 1px solid #aab3ff;
-    box-shadow: 0px 0px 10px 3px rgba(170, 179, 255, 0.3);
-    border-radius: 16px;
-    padding: 10px; /* Added padding for better spacing */
-  }
-  
-  .myPostComment {
-    display: flex;
-    align-items: center;
-  }
-  
-  .userProfileCircle {
-    box-sizing: border-box;
-    margin-left: 5px;
-    width: 34px;
-    height: 34px;
-    background: #ffffff;
-    border: 1px solid #44a7ff;
-    border-radius: 20px;
-  }
-  
-  .userProfileCircle img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .myPostComment h3 {
-    position: absolute;
-    width: 112.13px;
-    height: 24px;
-    margin-left: 50px;
-    font-family: 'Acme';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 16px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #b5b7b8;
-  }
-  
-  .Comment {
-    position: absolute;
-    align-items: center;
-    margin-left: 110px;
-    font-size: 15px;
-  }
-  
-  .reply {
-    font-size: 13px;
-    margin-top: 20px;
-    margin-left: 220px;
-    color: #b5b7b8;
-    cursor: pointer; /* Make it look clickable */
-  }
-.replyForm {
-    
-  margin-top: 80px; /* Adjusted for better spacing below the comment or replies */
-  margin-left: -660px; /* Adjusted for better alignment */
+.comment-container {
+  position: absolute;
+  box-sizing: border-box;
+  width: 90%;
+  height: 50px;
+ 
+ bottom: 40px;
 }
-  
-  .replyContainer {
-    margin-top: 40px; /* Adjusted for better spacing */
-    margin-left: 50px; /* Adjusted for better alignment */
-    display: flex;
-    flex-direction: column; /* Stack replies vertically */
-    width: 90%;
-    background: #f5f5f5; /* Added a light background color for better separation */
-    border: 1px solid #e0e0e0; /* Border for each reply container */
-    border-radius: 8px; /* Rounded corners for better aesthetics */
-    padding: 10px; /* Added padding for better spacing */
-  }
-  .replyUsername {
-    margin-right: 10px; /* Adjusted for better spacing */
-    font-weight: bold; /* Make the username bold for emphasis */
-  }
-  
-  .replyComment {
-    font-size: 14px; /* Adjusted font size for better readability */
-    color: #555; /* Changed color for better contrast */
-  }
-  
+.user-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-content {
+  background: #ffffff;
+  border: 1px solid #aab3ff;
+  box-shadow: 0px 0px 10px 3px rgba(170, 179, 255, 0.3);
+  border-radius: 16px;
+  padding: 10px;
+  flex: 1;
+}
+
+.comment {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #aab3ff;
+  border-radius: 16px;
+}
+
+.reply {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.comment-input,
+.reply-input {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment-input input,
+.reply-input input {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.comment-input button,
+.reply-input button {
+  background-color: #aab3ff;
+  color: white;
+  font-size: 10px;
+  width: 50px;
+  border: none;
+  cursor: pointer;
+}
+.replyBtn{
+  width: 50px;
+  font-size: 10px;
+  margin-left: 10px;
+}
+

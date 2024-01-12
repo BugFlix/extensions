@@ -98,6 +98,7 @@ const Menu = () => {
     });
     console.log(response.data);
   };
+  const content = getScrabHtml();
 
   return (
     <div className="Container">
@@ -115,17 +116,20 @@ const Menu = () => {
       </div>
       {selectedComponent === "E" && (
         <>
-          <Title ref={titleRef} />
-          <Tag ref={tagRef} />
-          <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
-          <Post ref={postRef} />
-          <button className="saveBtn" onClick={saveMemo}>
-            저장
-          </button>
+          <div className="postEditContainer">
+            {" "}
+            <Title ref={titleRef} />
+            <Tag ref={tagRef} />
+            <Scrab ref={scrabRef} getStyledContent={getStyledContent} />
+            <Post ref={postRef} />
+            <button className="saveBtn" onClick={saveMemo}>
+              저장
+            </button>
+          </div>
         </>
       )}
       {selectedComponent === "V" && <View />}
-      {selectedComponent === "U" && <Update />}
+      {selectedComponent === "U" && <Update contenti={content} />}
     </div>
   );
 };

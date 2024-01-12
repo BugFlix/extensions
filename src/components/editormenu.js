@@ -14,45 +14,27 @@ const EditorMenu = ({
 }) => {
   return (
     <div className="editor-menu">
-      <button
-        onClick={() => handleStyleClick("bold")}
-        id="btn-bold"
-        className={activeStyles.bold ? "active" : ""}
-      >
+      <button onClick={() => handleStyleClick("bold")} id="btn-bold">
         <b>B</b>
       </button>
-      <button
-        onClick={() => handleStyleClick("italic")}
-        id="btn-italic"
-        className={activeStyles.italic ? "active" : ""}
-      >
+      <button onClick={() => handleStyleClick("italic")} id="btn-italic">
         <i>I</i>
       </button>
-      <button
-        onClick={() => handleStyleClick("underline")}
-        id="btn-underline"
-        className={activeStyles.underline ? "active" : ""}
-      >
+      <button onClick={() => handleStyleClick("underline")} id="btn-underline">
         <u>U</u>
       </button>
-      <button
-        onClick={() => handleStyleClick("strikeThrough")}
-        id="btn-strike"
-        className={activeStyles.strikeThrough ? "active" : ""}
-      >
+      <button onClick={() => handleStyleClick("strikeThrough")} id="btn-strike">
         <s>S</s>
       </button>
       <button
         onClick={() => handleStyleClick("insertOrderedList")}
         id="btn-ordered-list"
-        className={activeStyles.insertOrderedList ? "active" : ""}
       >
         <img src={List} />
       </button>
       <button
         onClick={() => handleStyleClick("insertUnorderedList")}
         id="btn-unordered-list"
-        className={activeStyles.insertUnorderedList ? "active" : ""}
       >
         <img src={Blist} />
       </button>

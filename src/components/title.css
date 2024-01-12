@@ -1,7 +1,7 @@
 .title-container{
     position: absolute;
     display: flex;
-    top: 60px;
+    top: 10px;
     left: 0;
 }
 .title-container textarea{

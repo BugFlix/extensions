@@ -1,17 +1,17 @@
 .editor-menu{
   position: fixed;
-  top: 400px;
+  top: 150px;
   z-index: 9999;
   
 }
 button {
-  background: white;
+  background: transparent;
   border: 1px solid #AAB3FF;
   color: #333; /* Text color */
   cursor: pointer;
-  border-radius: 4px;
   width: 30px;
   height: 20px;
+  border: none;
 
 }
 button img{
@@ -21,11 +21,7 @@ button img{
 }
 
 button:hover {
-  background-color: #AAB3FF;
-  color: white;
-}
-.post-box .editor-menu button.active {
-  background-color: #AAB3FF;
+  background-color: #cccccc;
   color: white;
 }
 

@@ -23,7 +23,7 @@ const Signup = ({ onClose }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const response = axios.post("/api/users", requestData, {
+    const response = axios.post("/api/v1/users", requestData, {
       headers: {
         "Content-Type": "application/json",
       },

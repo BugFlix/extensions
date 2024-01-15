@@ -36,7 +36,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
     //     console.log(error);
     //   }); 동기 처리
     try {
-      const response = await api.get("/api/user/login", {
+      const response = await api.get("/api/v1/auth/login", {
         params: {
           logindId: email,
           password: password,
@@ -46,6 +46,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
         },
       });
       const data = response.data;
+      console.log(data);
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);

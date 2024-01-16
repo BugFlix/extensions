@@ -1,6 +1,6 @@
 import React from "react";
 import profileImg from "../images/profile.png";
-const profile = ({ onLogout }) => {
+const profile = ({ nickname, onLogout }) => {
   const handleLogout = () => {
     onLogout();
     alert("로그아웃 되었습니다.");
@@ -10,7 +10,7 @@ const profile = ({ onLogout }) => {
       <circle className="profile-circle">
         <img src={profileImg} alt="profile" />
       </circle>
-      <div className="extension-username">Tkrhdrhkdduf</div>
+      <div className="extension-username">{nickname}</div>
       <button className="logoutBtn" onClick={handleLogout}>
         로그아웃
       </button>

@@ -97,7 +97,17 @@ color: #B9B3B3;
     margin-left: 230px;
     width: 22.5px;
     height: 22.5px;
-    background: url(../images//recommend.png);
     background-size: contain;
     border: none;
+}
+.recommendIcon img{
+    width: 15px;
+    object-fit: contain;
+    height: 15px;
+}
+.likeCount{
+    position: relative;
+    top: 78px;
+    font-size: 13px;
+    right: 30px;
 }

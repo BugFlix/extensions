@@ -71,31 +71,27 @@ const MyPost = ({ dataMyPostDetail }) => {
     const memo = document.getElementById("myPostEditor").innerHTML;
 
     const requestData = {
-      data: [
-        {
-          title: title,
-          tags: tags,
-          content: scrab,
-          memo: memo,
-        },
-      ],
+      title: title,
+      tags: tags,
+      content: scrab,
+      memo: memo,
     };
     console.log(requestData);
 
-    // try {
-    //   const response = await api.put("/api/post", requestData, {
-    //     params: {
-    //       postId: post_id,
-    //     },
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${accessToken}`,
-    //     },
-    //   });
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const response = await api.put("/api/post", requestData, {
+        params: {
+          postId: post_id,
+        },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const onHandleUpdateBtn = () => {
     setUpdateBtn(true);

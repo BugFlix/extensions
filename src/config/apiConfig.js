@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "weblog.com",
+  baseURL: "http://3.34.222.165:8080",
   headers: {
     "Content-Type": "application/json",
   },
@@ -32,9 +32,20 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const response = await axios.post("/api/v1/auth/reissue", {
-          refreshToken: localStorage.getItem("refreshtoken"),
-        });
+        // const body = {
+        //   email: email,
+        //   password: password,
+        // };
+        const response = await api.post(
+          "/api/v1/auth/reissue",
+          // body,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("refreshtoken")}`,
+            },
+          }
+        );
 
         const newAccessToken = response.data.accessToken;
         localStorage.setItem("accessToken", newAccessToken);

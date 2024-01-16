@@ -33,12 +33,12 @@ const Login = ({ onClose, onLoginSuccess }) => {
     //   .catch((error) => {
     //     console.log(error);
     //   }); 동기 처리
+    const requestData = {
+      email: email,
+      password: password,
+    };
     try {
-      const response = await api.get("/api/v1/auth/login", {
-        params: {
-          email: email,
-          password: password,
-        },
+      const response = await api.post("/api/v1/auth/login", requestData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -46,8 +46,9 @@ const Login = ({ onClose, onLoginSuccess }) => {
       const data = response.data;
       console.log(data);
       if (data.accessToken && data.refreshToken) {
-        localStorage.setItem("accestoken", data.accessToken);
+        localStorage.setItem("accesstoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
+        onLoginSuccess(data.nickname);
       }
     } catch (error) {
       console.log(error);

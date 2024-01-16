@@ -10,24 +10,24 @@ const Signup = ({ onClose }) => {
   const [nickname, setNickName] = useState();
   const [birth, setBirth] = useState();
   const requestData = {
-    data: [
-      {
-        email: email,
-        password: password,
-        nickname: nickname,
-        phoneNumber: phone,
-        birthDate: birth,
-      },
-    ],
+    email: email,
+    password: password,
+    nickname: nickname,
+    phoneNumber: phone,
+    birthDate: birth,
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const response = axios.post("/api/v1/users", requestData, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = axios.post(
+      "http://3.34.222.165:8080/api/v1/users",
+      requestData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     console.log(response.data);
   };
   const handleChangePassword = (e) => {

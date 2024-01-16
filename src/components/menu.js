@@ -80,17 +80,13 @@ const Menu = () => {
     const scrabHtml = getScrabHtml();
     const postHtml = getPostHtml();
     const requestData = {
-      data: [
-        {
-          title: titleHtml,
-          tags: tagHtml,
-          content: scrabHtml,
-          memo: postHtml,
-          url: window.location.href,
-          image_url:
-            "https://blog.kakaocdn.net/dn/clyrhv/btqXJVvfOgF/1lMKjoQo3iW0pyYDmV2HVK/img.jpg",
-        },
-      ],
+      title: titleHtml,
+      tags: tagHtml,
+      content: scrabHtml,
+      memo: postHtml,
+      url: window.location.href,
+      image_url:
+        "https://blog.kakaocdn.net/dn/clyrhv/btqXJVvfOgF/1lMKjoQo3iW0pyYDmV2HVK/img.jpg",
     };
     console.log(requestData);
     try {

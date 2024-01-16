@@ -82,20 +82,20 @@ const MyPost = ({ dataMyPostDetail }) => {
     };
     console.log(requestData);
 
-    // try {
-    //   const response = await api.put("/api/post", requestData, {
-    //     params: {
-    //       postId: post_id,
-    //     },
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${accessToken}`,
-    //     },
-    //   });
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const response = await api.put("/api/post", requestData, {
+        params: {
+          postId: post_id,
+        },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const onHandleUpdateBtn = () => {
     setUpdateBtn(true);

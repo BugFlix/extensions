@@ -10,13 +10,6 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const [message, setMessage] = useState();
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (email === "sgky0511" && password === "ky4400") {
-      alert("로그인 성공");
-      onLoginSuccess("sgky0511");
-    } else {
-      alert("로그인 실패");
-    }
     // axios
     //   .get("/api/users/login", {
     //     params: {
@@ -48,6 +41,8 @@ const Login = ({ onClose, onLoginSuccess }) => {
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
+        onLoginSuccess(data.user.nickname);
+        alert("로그인 성공");
       }
     } catch (error) {
       console.log(error);

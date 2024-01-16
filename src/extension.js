@@ -10,7 +10,6 @@ function App() {
   const handLoginSuccess = (nickname) => {
     setIsLoggedIn(true);
     setNickname(nickname);
-    console.log(nickname);
   };
   //로그아웃 페이지
   const handleLogout = () => {

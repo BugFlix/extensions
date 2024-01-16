@@ -2,19 +2,33 @@ import "./signup.css";
 import CloseBtn from "../images/closeBtn.png";
 import React, { useState } from "react";
 import Extensions from "./Loginextentions";
-const Signup = ({ onClose, onLoginSuccess }) => {
-  const [id, setId] = useState();
+import axios from "axios";
+const Signup = ({ onClose }) => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
   const [nickname, setNickName] = useState();
   const [birth, setBirth] = useState();
+  const requestData = {
+    data: [
+      {
+        email: email,
+        password: password,
+        nickname: nickname,
+        phoneNumber: phone,
+        birthDate: birth,
+      },
+    ],
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-  };
-  const handleChangeId = (e) => {
-    setId(e.target.value);
+    const response = axios.post("/api/v1/users", requestData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(response.data);
   };
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
@@ -45,14 +59,14 @@ const Signup = ({ onClose, onLoginSuccess }) => {
         <form onSubmit={onSubmit}>
           <div className="modalBody">
             <div className="inputDiv">
-              <label className="inputLabel" htmlFor="id">
-                아이디
+              <label className="inputLabel" htmlFor="email">
+                이메일
               </label>
               <input
-                id="id"
+                id="email"
                 className="input"
-                value={id}
-                onChange={handleChangeId}
+                value={email}
+                onChange={handleChangeEmail}
                 type="text"
                 placeholder=""
               />
@@ -71,14 +85,14 @@ const Signup = ({ onClose, onLoginSuccess }) => {
               />
             </div>
             <div className="inputDiv">
-              <label className="inputLabel" htmlFor="email">
-                이메일
+              <label className="inputLabel" htmlFor="nickname">
+                닉네임
               </label>
               <input
-                id="email"
+                id="nickname"
                 className="input"
-                value={email}
-                onChange={handleChangeEmail}
+                value={nickname}
+                onChange={handleChangeNickname}
                 type="text"
                 placeholder=""
               />
@@ -92,19 +106,6 @@ const Signup = ({ onClose, onLoginSuccess }) => {
                 className="input"
                 value={phone}
                 onChange={handleChangePhone}
-                type="text"
-                placeholder=""
-              />
-            </div>
-            <div className="inputDiv">
-              <label className="inputLabel" htmlFor="nickname">
-                닉네임
-              </label>
-              <input
-                id="nickname"
-                className="input"
-                value={nickname}
-                onChange={handleChangeNickname}
                 type="text"
                 placeholder=""
               />
@@ -124,7 +125,10 @@ const Signup = ({ onClose, onLoginSuccess }) => {
             </div>
           </div>
           <div className="modalFooter">
-            <button className="registerActionBtn" disabled={!id && !password}>
+            <button
+              className="registerActionBtn"
+              disabled={!email && !password}
+            >
               회원가입하기
             </button>
           </div>

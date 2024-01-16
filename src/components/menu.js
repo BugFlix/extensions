@@ -9,8 +9,10 @@ import Tag from "./tag";
 import Title from "./title";
 import axios from "axios";
 import Update from "../pages/update";
+import api from "../config/apiConfig";
 
 const Menu = () => {
+  const accessToken = localStorage.getItem("accesstoken");
   const [selectedHtml, setSelectedHtml] = useState("");
   const [computedStyles, setComputedStyles] = useState({});
   const [isDragging, setIsDragging] = useState(false);
@@ -72,7 +74,7 @@ const Menu = () => {
     }
     return "";
   };
-  const saveMemo = () => {
+  const saveMemo = async () => {
     const titleHtml = getTitleHtml();
     const tagHtml = getTagHtml();
     const scrabHtml = getScrabHtml();
@@ -81,7 +83,7 @@ const Menu = () => {
       data: [
         {
           title: titleHtml,
-          tag: tagHtml,
+          tags: tagHtml,
           content: scrabHtml,
           memo: postHtml,
           url: window.location.href,
@@ -91,14 +93,18 @@ const Menu = () => {
       ],
     };
     console.log(requestData);
-    const response = axios.post("/api/post", requestData, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response.data);
+    try {
+      const response = await api.post("/api/post", requestData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const content = getScrabHtml();
 
   return (
     <div className="Container">
@@ -129,7 +135,7 @@ const Menu = () => {
         </>
       )}
       {selectedComponent === "V" && <View />}
-      {selectedComponent === "U" && <Update contenti={content} />}
+      {selectedComponent === "U" && <Update />}
     </div>
   );
 };

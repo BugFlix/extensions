@@ -5,7 +5,7 @@ import closeBtnImg from "../../src/images/closeBtn.png";
 import openBtnImg from "../../src/images/logo.png";
 import Menu from "../components/menu";
 import Header from "../components/header";
-const Extensions = ({ onLogout }) => {
+const Extensions = ({ nickname, onLogout }) => {
   const [isContainerVisible, setIsContainerVisible] = useState(false);
 
   const [btnClass, setBtnClass] = useState("openBtn");
@@ -18,7 +18,7 @@ const Extensions = ({ onLogout }) => {
     );
   };
   const accessToken = localStorage.getItem("accesstoken");
-  console.log(accessToken);
+
   return (
     <div>
       <div className={btnClass} onClick={toggleContainerVisibility}>
@@ -30,7 +30,7 @@ const Extensions = ({ onLogout }) => {
       {isContainerVisible && (
         <div className="extension-content">
           <Menu />
-          <Profile onLogout={onLogout} />
+          <Profile nickname={nickname} onLogout={onLogout} />
           <Header />
         </div>
       )}

@@ -4,9 +4,13 @@ import UnloginExtentions from "./pages/Unloginextentions";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [nickname, setNickname] = useState("");
+
   //로그인 된 페이지
-  const handLoginSuccess = () => {
+  const handLoginSuccess = (nickname) => {
     setIsLoggedIn(true);
+    setNickname(nickname);
+    console.log(nickname);
   };
   //로그아웃 페이지
   const handleLogout = () => {
@@ -15,7 +19,7 @@ function App() {
   return (
     <div>
       {isLoggedIn ? (
-        <Extensions onLogout={handleLogout} />
+        <Extensions nickname={nickname} onLogout={handleLogout} />
       ) : (
         <>
           <UnloginExtentions onLoginSuccess={handLoginSuccess} />

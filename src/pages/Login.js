@@ -8,14 +8,12 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
-  const [getUserId, setGetUserId] = useState();
-  const [getNickname, setGetNickname] = useState();
-  const [getEmail, setGetEmail] = useState();
   const onSubmit = async (e) => {
     e.preventDefault();
+
     if (email === "sgky0511" && password === "ky4400") {
-      onLoginSuccess(getUserId, getNickname, getEmail);
       alert("로그인 성공");
+      onLoginSuccess("sgky0511");
     } else {
       alert("로그인 실패");
     }
@@ -38,7 +36,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
     try {
       const response = await api.get("/api/v1/auth/login", {
         params: {
-          logindId: email,
+          email: email,
           password: password,
         },
         headers: {
@@ -50,9 +48,6 @@ const Login = ({ onClose, onLoginSuccess }) => {
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accestoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
-        setGetUserId(data.userId);
-        setGetNickname(data.nickname);
-        setGetEmail(data.email);
       }
     } catch (error) {
       console.log(error);
@@ -75,7 +70,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
           <div className="modalBody">
             <div className="inputDiv">
               <label className="inputLabel" htmlFor="email">
-                아이디
+                이메일
               </label>
               <input
                 id="email"

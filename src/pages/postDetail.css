@@ -21,7 +21,7 @@
 .postTagContainer{
   position: absolute;
   left: 0;
-  margin-top: 75px;
+  margin-top: 90px;
   margin-left: 25px;
 }
 .postDetailContainer{
@@ -34,6 +34,7 @@
 }
 .myPostScrabBox{
     position: absolute;
+    top: 10px;
     margin-top: 120px;
     justify-content: center;
     box-sizing: border-box;
@@ -122,4 +123,13 @@
   top: 77.5px;
   right: 65px;
   font-size: 20px;
+}
+.postWho{
+  position: relative;
+  width: 100%;
+  top: 70px;
+  display: flex;
+  left: 28px;
+  gap: 5px;
+  font-size: 12px;
 }

@@ -111,3 +111,29 @@ color: #B9B3B3;
     font-size: 13px;
     right: 30px;
 }
+.datePreview{
+    width: 100%;
+}
+.datePreview div{
+    position: absolute;
+    margin-top:60px;
+    display: flex;
+    margin-left: 20px;
+    font-size: 10px;    
+}
+
+.postWhoPreview{
+
+    width: 100%;
+   
+   
+}
+.postWhoPreview div{
+    position: absolute;
+    margin-top: 80px;
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    flex-direction: row;
+    font-size: 12px;
+}

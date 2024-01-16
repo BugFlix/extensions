@@ -21,7 +21,7 @@
 .myPostTagContainer{
   position: absolute;
   left: 0;
-  margin-top: 75px;
+  margin-top: 90px;
   margin-left: 25px;
 }
 .myPostDetailContainer{
@@ -181,4 +181,14 @@ border-radius: 30px;
   right: 65px;
   font-size: 20px;
 }
+.postWho{
+  position: relative;
+  width: 100%;
+  top: 70px;
+  display: flex;
+  left: 28px;
+  gap: 5px;
+  font-size: 12px;
+}
+
 

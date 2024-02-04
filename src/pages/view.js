@@ -6,6 +6,9 @@ import api from "../config/apiConfig";
 
 const View = () => {
   const url = window.location.href;
+  console.log(url);
+  const encodeUrl = encodeURIComponent(url);
+  console.log(encodeUrl);
   const accessToken = localStorage.getItem("accesstoken");
   const [dataPost, setDataPost] = useState(null);
   //get 방식
@@ -101,21 +104,16 @@ const View = () => {
     // };
     // setDataPost(responseDat.data);
     api
-      .get("/api/post/preview", {
-        params: {
-          url: url,
-        },
+      .get(`api/v1/posts/preview?url=${encodeUrl}`, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
       })
       .then((response) => {
-        console.log(response.data);
         setDataPost(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error fetching data:", error);
       });
   }, []);
 

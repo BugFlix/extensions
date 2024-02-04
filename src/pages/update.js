@@ -6,7 +6,10 @@ import api from "../config/apiConfig";
 const Update = () => {
   const [dataMyPost, setDataMyPost] = useState();
   const accessToken = localStorage.getItem("accesstoken");
-
+  const url = window.location.href;
+  console.log(url);
+  const encodeUrl = encodeURIComponent(url);
+  console.log(encodeUrl);
   useEffect(() => {
     // const responseDat = {
     //   data: [
@@ -50,10 +53,7 @@ const Update = () => {
     // };
     // setDataMyPost(responseDat.data);
     api
-      .get("//api/post/mine", {
-        params: {
-          url: window.location.href,
-        },
+      .get(`/api/v1/posts/mine?url=${encodeUrl}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,

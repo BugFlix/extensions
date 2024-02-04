@@ -113,7 +113,7 @@ const MyPostPreview = ({ dataMyPost }) => {
       };
     }
   };
-  const onHandleMyPost = async () => {
+  const onHandleMyPost = async (postId) => {
     setShowMyPost(!showMyPost);
     // const responseData = {
     //   data: [
@@ -153,10 +153,7 @@ const MyPostPreview = ({ dataMyPost }) => {
     // };
     // setDataMyPostDetail(responseData.data);
     try {
-      const response = await api.get("/api/post/mine", {
-        params: {
-          url: window.location.href,
-        },
+      const response = await api.get(`/api/v1/posts/${postId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
@@ -192,7 +189,7 @@ const MyPostPreview = ({ dataMyPost }) => {
               key={index}
               className="myPreviewBox"
               style={getPreviewBoxStyle()}
-              onClick={onHandleMyPost}
+              onClick={() => onHandleMyPost(value.postId)}
             >
               <img
                 className="myBox"

@@ -38,7 +38,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
       password: password,
     };
     try {
-      const response = await api.post("/api/v1/auth/login", requestData, {
+      const response = await api.post("/api/v1/auths/login", requestData, {
         headers: {
           "Content-Type": "application/json",
         },

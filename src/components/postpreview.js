@@ -4,6 +4,7 @@ import Collection2 from "../images/multiple.png";
 import PostDetail from "../pages/postDetail";
 import api from "../config/apiConfig";
 import likeImg from "../images/likestar.png";
+import axios from "axios";
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formattedDate = new Date(dateString).toLocaleDateString(
@@ -43,6 +44,8 @@ const PostPreview = ({ dataPost }) => {
   const [showPost, setShowPost] = useState(false);
   const [dataPostDetail, setDataPostDetail] = useState();
   const accessToken = localStorage.getItem("accesstoken");
+  console.log(accessToken);
+  console.log(dataPost);
 
   const handleCollection = (prev) => {
     selectCollection((prevCollection) =>
@@ -114,6 +117,7 @@ const PostPreview = ({ dataPost }) => {
     }
   };
   const onHandlePost = async (postId) => {
+    console.log(postId);
     setShowPost(!showPost);
     // console.log(postId);
     // const responseData = {
@@ -154,19 +158,24 @@ const PostPreview = ({ dataPost }) => {
     // };
     // setDataPostDetail(responseData.data);
     try {
-      const response = await api.get("/api/post", {
-        params: {
-          postId: postId,
-        },
+      const response = await api.get(`api/v1/posts/${postId}`, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
       });
       console.log(response.data);
       setDataPostDetail(response.data);
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        console.error("HTML Response:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Request setup error:", error.message);
+      }
+      console.error("Full error object:", error);
     }
   };
   return (
@@ -191,7 +200,7 @@ const PostPreview = ({ dataPost }) => {
             <div
               key={index}
               className="previewBox"
-              onClick={() => onHandlePost(value.post_id)}
+              onClick={() => onHandlePost(value.postId)}
               style={getPreviewBoxStyle()}
             >
               <img

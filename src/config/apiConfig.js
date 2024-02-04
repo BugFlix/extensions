@@ -37,7 +37,7 @@ api.interceptors.response.use(
         //   password: password,
         // };
         const response = await api.post(
-          "/api/v1/auth/reissue",
+          "/api/v1/auths/reissue",
           // body,
           {
             headers: {

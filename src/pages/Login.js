@@ -16,23 +16,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
       onLoginSuccess("sgky0511");
     } else {
       alert("로그인 실패");
-    }
-    // axios
-    //   .get("/api/users/login", {
-    //     params: {
-    //       loginId: id,
-    //       password: password,
-    //     },
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   }); 동기 처리
+    } // 동기 처리
     const requestData = {
       email: email,
       password: password,

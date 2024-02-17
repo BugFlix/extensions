@@ -16,23 +16,7 @@ const Login = ({ onClose, onLoginSuccess }) => {
       onLoginSuccess("sgky0511");
     } else {
       alert("로그인 실패");
-    }
-    // axios
-    //   .get("/api/users/login", {
-    //     params: {
-    //       loginId: id,
-    //       password: password,
-    //     },
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   }); 동기 처리
+    } // 동기 처리
     const requestData = {
       email: email,
       password: password,
@@ -60,6 +44,10 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
+  const auth = () => {
+    window.open("http://localhost:6005/auth/google/callback", "_self");
+  };
+
   return (
     <div className="LoginBackground">
       <div className="loginModal">
@@ -100,6 +88,9 @@ const Login = ({ onClose, onLoginSuccess }) => {
           <div className="modalFooter">
             <button className="loginActionBtn" disabled={!email && !password}>
               로그인하기
+            </button>
+            <button className="googleBtn" type="button" onClick={auth}>
+              로그인
             </button>
           </div>
         </form>

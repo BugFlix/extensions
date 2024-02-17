@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import Profile from "../components/profile";
 import closeBtnImg from "../../src/images/closeBtn.png";
@@ -10,12 +10,23 @@ const Extensions = ({ nickname, onLogout }) => {
 
   const [btnClass, setBtnClass] = useState("openBtn");
 
+  useEffect(() => {
+    const storedVisibility = localStorage.getItem("isContainerVisible");
+
+    if (storedVisibility) {
+      setIsContainerVisible(storedVisibility === "true");
+      setBtnClass(storedVisibility === "true" ? "closeBtn" : "openBtn");
+    }
+  }, []);
+
   //보이기 숨기기 버튼
   const toggleContainerVisibility = () => {
-    setIsContainerVisible((prev) => !prev);
-    setBtnClass((prevClass) =>
-      prevClass === "openBtn" ? "closeBtn" : "openBtn"
-    );
+    const newVisibility = !isContainerVisible;
+    setIsContainerVisible(newVisibility);
+    setBtnClass(newVisibility ? "closeBtn" : "openBtn");
+
+    // Save to localStorage
+    localStorage.setItem("isContainerVisible", newVisibility.toString());
   };
   const accessToken = localStorage.getItem("accesstoken");
 

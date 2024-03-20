@@ -20,7 +20,7 @@ const Signup = ({ onClose }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const response = axios.post(
-      "http://3.34.222.165:8080/api/v1/users",
+      "https://scrabler.com/api/v1/users",
       requestData,
       {
         headers: {

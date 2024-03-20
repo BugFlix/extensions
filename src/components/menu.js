@@ -85,21 +85,17 @@ const Menu = () => {
       content: scrabHtml,
       memo: postHtml,
       url: window.location.href,
-      image_url:
+      imageUrl:
         "https://blog.kakaocdn.net/dn/clyrhv/btqXJVvfOgF/1lMKjoQo3iW0pyYDmV2HVK/img.jpg",
     };
     console.log(requestData);
     try {
-      const response = await axios.post(
-        "http://3.34.222.165:8080/api/v1/posts",
-        requestData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await api.post("/api/v1/posts", requestData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       console.log(response.data);
     } catch (error) {
       console.log(error);

@@ -1,66 +1,57 @@
 import axios from "axios";
+
+//토큰이 불필요한 경우
 const api = axios.create({
-  baseURL: "http://3.34.222.165:8080",
+  baseURL: `https://www.scrabler.com`,
   headers: {
     "Content-Type": "application/json",
   },
 });
+console.log("refresh", localStorage.getItem("refreshtoken"));
+const requestData = {
+  email: localStorage.getItem("email"),
+  password: localStorage.getItem("password"),
+};
+//리프레시토큰 요청 api
+function postRefreshToken() {
+  console.log("hello");
+  console.log("refresh", localStorage.getItem("refreshtoken"));
+  console.log(requestData);
+  const response = api.post("/api/v1/auths/reissue", requestData, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("refreshtoken")}`,
+    },
+  });
+  console.log(response);
+  return response;
+}
 
-//가로채기
-api.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("accesstoken");
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
-//가로채기
+//리프레시 토큰 구현
 api.interceptors.response.use(
   (response) => {
     return response;
   },
   async (error) => {
-    const originalRequest = error.config;
+    const {
+      config,
+      response: { status },
+    } = error;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
+    if (status === 401) {
+      const originRequest = config;
       try {
-        // const body = {
-        //   email: email,
-        //   password: password,
-        // };
-        const response = await api.post(
-          "/api/v1/auths/reissue",
-          // body,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("refreshtoken")}`,
-            },
-          }
-        );
-
-        const newAccessToken = response.data.accessToken;
-        localStorage.setItem("accessToken", newAccessToken);
-
-        //새토큰으로 다시 요청 보냄
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        return axios(originalRequest);
-      } catch (refreshError) {
-        //리프레쉬 토큰이 계속 만료면 로그인으로 이동
-        console.log("Refresh token expired. Redirect to login page.");
+        const tokenResponse = await postRefreshToken();
+        const newAccessToken = tokenResponse.data.accessToken;
+        console.log(newAccessToken);
+        localStorage.setItem("accesstoken", newAccessToken);
+        axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+        originRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return { originRequest };
+      } catch (error) {
+        window.location.replace("/");
       }
     }
-
     return Promise.reject(error);
   }
 );
-
 export default api;

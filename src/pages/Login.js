@@ -11,28 +11,12 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (email === "sgky0511" && password === "ky4400") {
-      alert("로그인 성공");
-      onLoginSuccess("sgky0511");
-    } else {
-      alert("로그인 실패");
-    }
-    // axios
-    //   .get("/api/users/login", {
-    //     params: {
-    //       loginId: id,
-    //       password: password,
-    //     },
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   }); 동기 처리
+    // if (email === "sgky0511" && password === "ky4400") {
+    //   alert("로그인 성공");
+    //   onLoginSuccess("sgky0511");
+    // } else {
+    //   alert("로그인 실패");
+    // } // 동기 처리
     const requestData = {
       email: email,
       password: password,
@@ -48,6 +32,8 @@ const Login = ({ onClose, onLoginSuccess }) => {
       if (data.accessToken && data.refreshToken) {
         localStorage.setItem("accesstoken", data.accessToken);
         localStorage.setItem("refreshtoken", data.refreshToken);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
         onLoginSuccess(data.nickname);
       }
     } catch (error) {
@@ -60,6 +46,10 @@ const Login = ({ onClose, onLoginSuccess }) => {
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
+  const auth = () => {
+    window.open("http://localhost:6005/auth/google/callback", "_self");
+  };
+
   return (
     <div className="LoginBackground">
       <div className="loginModal">
@@ -100,6 +90,9 @@ const Login = ({ onClose, onLoginSuccess }) => {
           <div className="modalFooter">
             <button className="loginActionBtn" disabled={!email && !password}>
               로그인하기
+            </button>
+            <button className="googleBtn" type="button" onClick={auth}>
+              로그인
             </button>
           </div>
         </form>
